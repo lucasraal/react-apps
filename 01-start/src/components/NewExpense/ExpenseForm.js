@@ -22,13 +22,28 @@ const ExpenseForm = (props) => {
 
     const expenseData = {
       title: enteredTitle,
-      amount: enteredAmount,
+      // + prevents the value from becoming a string
+      // so it becomes a number
+      amount: +enteredAmount,
       date: new Date(enteredDate),
     };
     props.onSaveExpenseData(expenseData);
     setEnteredTitle("");
     setEnteredAmount("");
     setEnteredDate("");
+
+    props.onAddNewExpense();
+  };
+
+  const cancelHandler = (event) => {
+    // prevents page from "reloading" after clicking on submit
+    event.preventDefault();
+
+    setEnteredTitle("");
+    setEnteredAmount("");
+    setEnteredDate("");
+
+    props.onAddNewExpense();
   };
 
   return (
@@ -64,6 +79,9 @@ const ExpenseForm = (props) => {
         </div>
       </div>
       <div className="new-expense__actions">
+        <button type="reset" onClick={cancelHandler}>
+          Cancel
+        </button>
         <button type="submit">Add Expense</button>
       </div>
     </form>
