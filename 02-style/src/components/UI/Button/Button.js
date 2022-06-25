@@ -1,39 +1,12 @@
-import styled from "styled-components";
+// can use "styles" or "classes" when importing a css module
+import styles from "./Button.module.css";
 
-// import './Button.css';
-
-// Button from styled components generates unique class names
-const Button = styled.button`
-  font: inherit;
-  padding: 0.5rem 1.5rem;
-  border: 1px solid #8b005d;
-  color: white;
-  background: #8b005d;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.26);
-  cursor: pointer;
-
-  @media (max-width: 400px) {
-    width: 100%;
-  }
-
-  &:focus {
-    outline: none;
-  }
-
-  &:hover,
-  &:active {
-    background: #ac0e77;
-    border-color: #ac0e77;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.26);
-  }
-`;
-
-// const Button = props => {
-//   return (
-//     <button type={props.type} className="button" onClick={props.onClick}>
-//       {props.children}
-//     </button>
-//   );
-// };
+const Button = (props) => {
+  return (
+    <button type={props.type} className={styles.button} onClick={props.onClick}>
+      {props.children}
+    </button>
+  );
+};
 
 export default Button;

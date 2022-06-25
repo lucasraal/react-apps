@@ -8,6 +8,12 @@
   cursor: pointer;
 }
 
+@media (max-width: 400px) {
+  .button {
+    width: 100%;
+  }
+}
+
 .button:focus {
   outline: none;
 }

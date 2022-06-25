@@ -25,7 +25,7 @@
 }
 
 
-// using styled-component
+// using styled-components
 <FormControl className={!isValid && "invalid"}>
 const FormControl = styled.div`
   margin: 0.5rem 0;
@@ -62,4 +62,26 @@ const FormControl = styled.div`
 `;
 
 
-//
+// setting conditional styles using styled-components
+import styles from "./CourseInput.module.css";
+
+const FormControl = styled.div`
+  margin: 0.5rem 0;
+
+  & label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+    ${(props) => (props.invalid ? "color: red" : "")};
+  }
+
+  & input {
+    display: block;
+    width: 100%;
+    border: 1px solid ${(props) => (props.invalid ? "red" : "#ccc")};
+    background: ${(props) => (props.invalid ? "salmon" : "transparent")};
+    font: inherit;
+    line-height: 1.5rem;
+    padding: 0 0.25rem;
+  }
+`;
