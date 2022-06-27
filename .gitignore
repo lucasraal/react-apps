@@ -2,6 +2,9 @@
 
 # dependencies
 /01-start/node_modules/
+/02-style/node_modules/
+/03-modal/node_modules/
+/04-hooks/node_modules/
 /node_modules/
 node_modules/
 /node_modules
