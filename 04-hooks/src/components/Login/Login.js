@@ -7,36 +7,25 @@ import Button from "../UI/Button/Button";
 const reducer = (state, action) => {
   switch (action.type) {
     case "TYPE_EMAIL":
-      if (
-        action.value.includes("@") &&
-        state.enteredPassword.trim().length > 6
-      ) {
-        return Object.assign({}, state, {
-          enteredEmail: action.value,
-          formIsValid: true,
-        });
-      } else {
-        return Object.assign({}, state, {
-          enteredEmail: action.value,
-          formIsValid: false,
-        });
-      }
+      return {
+        ...state,
+        enteredEmail: action.value,
+        formIsValid:
+          action.value.includes("@") && state.enteredPassword.trim().length > 6,
+      };
+
     case "TYPE_PASSWORD":
-      if (state.enteredEmail.includes("@") && action.value.trim().length > 6) {
-        return Object.assign({}, state, {
-          enteredPassword: action.value,
-          formIsValid: true,
-        });
-      } else {
-        return Object.assign({}, state, {
-          enteredPassword: action.value,
-          formIsValid: false,
-        });
-      }
+      return {
+        ...state,
+        enteredPassword: action.value,
+        formIsValid:
+          state.enteredEmail.includes("@") && action.value.trim().length > 6,
+      };
+
     case "BLUR_EMAIL":
-      return Object.assign({}, state, { emailIsValid: action.value });
+      return { ...state, emailIsValid: action.value };
     case "BLUR_PASSWORD":
-      return Object.assign({}, state, { passwordIsValid: action.value });
+      return { ...state, passwordIsValid: action.value };
 
     default:
       break;
